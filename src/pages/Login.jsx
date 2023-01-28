@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 import { createUser } from '../services/userAPI';
+import Carregando from './Carregando';
 
 export default class Login extends Component {
   state = {
@@ -49,7 +50,7 @@ export default class Login extends Component {
         >
           Entrar
         </button>
-        { loading && <p>Carregando...</p>}
+        { loading && <Carregando />}
         {redirect && <Redirect to="/search" />}
 
       </div>
