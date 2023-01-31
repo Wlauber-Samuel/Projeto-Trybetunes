@@ -40,6 +40,7 @@ export default class MusicCard extends Component {
     const { music } = this.props;
     const { loading, isFavorite } = this.state;
     const { music: { trackId },
+      favoriteMusic,
     } = this.props;
 
     return (
@@ -64,6 +65,7 @@ export default class MusicCard extends Component {
                 checked={ isFavorite }
                 onChange={ this.handleChange }
                 data-testid={ `checkbox-music-${trackId}` }
+                onClick={ favoriteMusic }
               />
               Favorita
             </label>
