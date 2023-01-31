@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
 import Carregando from '../pages/Carregando';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 export default class MusicCard extends Component {
   state = {
@@ -11,7 +11,7 @@ export default class MusicCard extends Component {
 
   async componentDidMount() {
     this.setState({
-      isFavorite: await this.favorite(),
+      isFavorite: await this.favoriteSong(),
     });
   }
 
@@ -30,7 +30,7 @@ export default class MusicCard extends Component {
     });
   };
 
-  favorite = async () => {
+  favoriteSong = async () => {
     const { music: { trackId } } = this.props;
     const favorite = await getFavoriteSongs();
     return favorite.map((music) => music.trackId).includes(trackId);
